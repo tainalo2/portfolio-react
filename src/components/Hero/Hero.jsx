@@ -5,7 +5,6 @@ import D3ForceDirectedTree from "./D3JS/D3ForceDirectedTree";
 const Hero = () => {
     return (
         <div className="relative w-full h-fit pt-20 transform-gpu">
-            <div className="z-[-1] absolute inset-0 top-[-2.5rem] bg-[image:radial-gradient(100%_100%_at_50%_-25%,hsl(206,81.9%,65.3%,0.5),rgba(255,255,255,0))]"></div>
             <div className="w-full flex justify-center">
                 <div className="flex justify-between max-w-screen-xl w-full">
                     <div className="flex flex-col gap-4 justify-center items-center flex-1">
@@ -19,9 +18,10 @@ const Hero = () => {
                                 "/images/node-red_logo.png",
                                 "/images/nodeJS_logo.png",
                                 "/images/JavaScript_logo.png",
-                                "/images/mySQL_logo.png",
+                                "/images/mySQL_logo.jpg",
                                 "/images/git_logo.png"
                             ]}
+                            linkedCenter = 'node-center1'
                         />
                         <Card
                             svg={"/SVG/streaming-svgrepo-com.svg"}
@@ -30,9 +30,10 @@ const Hero = () => {
                             images={[
                                 "/images/Open_Broadcaster_Software_Logo.png",
                                 "/images/elgato_logo.png",
-                                "/images/node-red_logo.png",
-                                "/images/JavaScript_logo.png"
+                                "/images/twitchat_logo.png",
+                                "/images/larix_logo.png"
                             ]}
+                            linkedCenter = 'node-center2'
                         />
                         <Card
                             svg={"/SVG/microphone-4-svgrepo-com.svg"}
@@ -43,8 +44,10 @@ const Hero = () => {
                                 "/images/twitch_logo.png",
                                 "/images/logo_instagram.png",
                                 "/images/logo_twitter.png",
-                                "/images/tiktok_logo.png"
+                                "/images/tiktok_logo.png",
+                                "/images/streamerbot_logo.png"
                             ]}
+                            linkedCenter = 'node-center3'
                         />
                     </div>
                     <div className="flex-1">

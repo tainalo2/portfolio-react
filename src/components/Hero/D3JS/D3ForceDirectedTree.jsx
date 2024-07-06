@@ -33,7 +33,7 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
         defs.selectAll('clipPath')
             .data(data.nodes)
             .enter().append('clipPath')
-            .attr('id', d => `clip-${d.group}`)
+            .attr('id', d => `clip-${d.id}`)
             .append('circle')
             .attr('r', d => {
                 if (d.group === 'root') {
@@ -74,6 +74,11 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
             }) // Définit le rayon de 80 pour la racine, 20 pour les autres
             .attr('fill', '#1e2937') // Couleur différente pour la racine
             .attr('stroke', '#1e2937')
+            .attr('class', d => {
+                if (d.group === 'center') {
+                    return 'center';
+                }
+            })
             .attr('id', d => `node-${d.id}`)
             .attr('stroke-width', 1.5);
 

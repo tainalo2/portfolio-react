@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import InfiniteCarousel from "./InfiniteCarousel";
 
-const Card = ({ svg, title, description, images }) => {
+const Card = ({ svg, title, description, images, linkedCenter }) => {
 
     const [isHovered, setIsHovered] = useState(false);
 
     const handleHover = () => {
-        setIsHovered(!isHovered);
+        setIsHovered(true);
+        console.log( linkedCenter );
+        document.getElementById(linkedCenter).style.filter = "drop-shadow( 0px 0px 10px rgba(255, 255, 255, 1))";
+    };
+
+    const handleNotHover = () => {
+        setIsHovered(false);
+        console.log(linkedCenter);
+        document.getElementById(linkedCenter).style.filter = "drop-shadow( 0px 0px 10px rgba(255, 255, 255, 0))";
     };
 
     useEffect(() => {
@@ -22,7 +30,7 @@ const Card = ({ svg, title, description, images }) => {
                 zIndex: isHovered ? '10' : '0',
             }}
             onMouseEnter={handleHover}
-            onMouseLeave={handleHover}>
+            onMouseLeave={handleNotHover}>
             <div className="text-white font-bold bg-gray-800 px-4 py-2 w-full text-center flex justify-center items-center gap-2">
                 <img className="w-[25px] h-[25px]" src={svg} alt="" />
                 <h2 className="text-white text-center">
