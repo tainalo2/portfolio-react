@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import { MyProvider } from './MyContext';
 import MainBG from './components/Backgrounds/MainBG';
 import Footer from './components/Footer/Footer';
+import ARTree from './components/Outlets/Home/ARTree';
+import DevWeb from './components/Outlets//Home/DevWeb/DevWeb';
+import Streaming from './components/Outlets/Home/Streaming';
+
 
 function App() {
   return (
@@ -15,7 +19,13 @@ function App() {
           <MainBG />
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />}>
+              <Route index element={<ARTree />} />
+              <Route path="devweb" element={<DevWeb />} />
+              <Route path="streaming" element={<Streaming />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+
           </Routes>
         </Router>
         <Footer />

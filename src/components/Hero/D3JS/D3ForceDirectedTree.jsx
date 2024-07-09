@@ -80,7 +80,8 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
                 }
             })
             .attr('id', d => `node-${d.id}`)
-            .attr('stroke-width', 1.5);
+            .attr('stroke-width', 1.5)
+            .attr('style', 'transition: all 0.3s ease-in-out;');
 
         // Add images to nodes inside circles using clipPath
         const images = node.append('image')
@@ -185,8 +186,8 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
     }, [data, mouseStrength]);
 
     return (
-        <div className='relative w-[800px] h-[600px]'>
-            <svg className='absolute top-[-150px]' ref={svgRef}></svg>
+        <div className='relative w-full h-fit flex justify-center'>
+            <svg className='relative top-[-150px]' ref={svgRef}></svg>
 
         </div>
     );

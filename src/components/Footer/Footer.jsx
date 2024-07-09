@@ -1,11 +1,19 @@
 import React from "react";
 import Icon from "./Icon";
-
+import { motion } from "framer-motion";
 
 const Footer = () => {
     return (
         <footer className="w-full h-20 text-white flex justify-center items-center text-xs absolute bottom-0">
-            <div className="w-full max-w-screen-xl  flex items-center h-full gap-8 justify-between">
+            <motion.div 
+                initial={
+                    { x: 0, y: 50, opacity: 0 }
+                }
+                animate={
+                    { x: 0, y: 0 , opacity: 1 }
+                }
+                transition={{ duration: 1 }}
+                className="w-full max-w-screen-xl  flex items-center h-full gap-8 justify-between">
                 <div className="text-start">
                     <div>Alexandre RONGIER</div>
                     <div>Tous droits réservés © 2024</div>
@@ -33,7 +41,7 @@ const Footer = () => {
                         url="https://www.twitch.com/tainalo2"
                     />
                 </div>
-            </div>
+            </motion.div>
 
         </footer>
     );
