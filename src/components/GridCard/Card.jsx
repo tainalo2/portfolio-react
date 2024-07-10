@@ -6,6 +6,10 @@ const Card = ({ children, colSpan, position }) => {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const elementToGetPosition = useRef(null);
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
     useEffect(() => {
         const handleResize = () => {
             if (elementToGetPosition.current) {
@@ -20,15 +24,19 @@ const Card = ({ children, colSpan, position }) => {
 
     useEffect(() => {
         if (elementToGetPosition.current) {
-            setOffset({ x: elementToGetPosition.current.getBoundingClientRect().left, y: elementToGetPosition.current.getBoundingClientRect().top });
+            sleep(800).then(() => { setOffset({ x: elementToGetPosition.current.getBoundingClientRect().left, y: elementToGetPosition.current.getBoundingClientRect().top }); });
+            
         }
-    }, [elementToGetPosition.current]);
+    }, []);
 
 
     return (
         <div
             ref={elementToGetPosition}
-            className={`relative overflow-hidden rounded-lg bg-gray-800 p-[1px] col-span-${colSpan}`}
+            className={`relative overflow-hidden rounded-lg bg-gray-800 p-[1px]`}
+            style={{
+                gridColumn: `span ${colSpan}`,
+            }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

@@ -1,12 +1,12 @@
 import React from "react";
 
 
-const Streaming = () => {
+const Entertainer = () => {
     return (
         <div>
-            <h1>Streaming</h1>
+            
         </div>
     );
 };
 
-export default Streaming;
+export default Entertainer;
