@@ -1,11 +1,12 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion"
+import React,  { useDebugValue } from "react";
 import D3ForceDirectedTree from "../../Hero/D3JS/D3ForceDirectedTree";
 
 
-const ARTree = ({ isVisible }) => {
+const ARTree = ({}) => {
+
+    useDebugValue('Component re-rendered!');
     return (
-        <D3ForceDirectedTree data={{
+            <D3ForceDirectedTree data={{
             nodes: [
                 { id: 'root', group: 'root', img: '/images/Alexandre_RONGIER.png' },
                 { id: 'center1', group: 'center', img: '/SVG/web-svgrepo-com.svg' },
@@ -51,6 +52,8 @@ const ARTree = ({ isVisible }) => {
             ]
         }
         } mouseStrength={0.03} />
+
+        
     );
 };
 

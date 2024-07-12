@@ -4,7 +4,7 @@ export default function MainBG() {
     const svgBackground = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\"><circle cx=\"5\" cy=\"5\" r=\"2\" fill=\"white\"/></svg>')";
     return (
         <div
-        className="absolute inset-0 top-0 w-full h-100 overflow-hidden"
+        className="absolute inset-0 top-0 w-full h-100 overflow-hidden opacity-50"
         style={
             {
                 maskImage: 'radial-gradient(70% 100% at 50% -30%, hsl(207.9, 16.3%, 66.3%), rgba(185, 22, 22, 0))',

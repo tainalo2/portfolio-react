@@ -13,7 +13,7 @@ const Footer = () => {
                     { x: 0, y: 0 , opacity: 1 }
                 }
                 transition={{ duration: 1 }}
-                className="w-full max-w-screen-xl  flex items-center h-full gap-8 justify-between">
+                className="w-full max-w-screen-lg  flex items-center h-full gap-8 justify-between">
                 <div className="text-start">
                     <div>Alexandre RONGIER</div>
                     <div>Tous droits réservés © 2024</div>

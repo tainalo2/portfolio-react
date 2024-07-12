@@ -1,12 +1,66 @@
-import React from "react";
-
+import React, { useState, useContext, useEffect } from "react";
+import { MyContext } from "../../../../MyContext";
+import CardTitle from "../../../GridCard/CustomCards/CardTitle";
+import Card from "../../../GridCard/Card";
+import CardTarif from "../../../GridCard/CustomCards/CardTarif";
+import CardDispo from "../../../GridCard/CustomCards/CardDispo";
+import CardContact from "../../../GridCard/CustomCards/CardContact";
+import CardSponsor from "../../../GridCard/CustomCards/CardSponsor";
+import CardSocialNetwork from "../../../GridCard/CustomCards/CardSocialNetwork";
 
 const Entertainer = () => {
+    const { setStreamingService } = useContext(MyContext);
+
+    useEffect(() => {
+        // Composant monté
+        setStreamingService(true);
+    
+        // Cleanup function pour quand le composant est démonté
+        return () => {
+            setStreamingService(false);
+        };
+      }, [setStreamingService]);
+
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const handleMouseMove = (event) => {
+        setPosition({ x: event.clientX, y: event.clientY });
+    };
+
+    const titles = ["Divertir", "Vulgariser", "Promouvoir"];
+    const svgs = ["/SVG/snes-svgrepo-com.svg", "/SVG/science-lecture-svgrepo-com.svg", "/SVG/talk-bubbles-svgrepo-com.svg"];
+
     return (
-        <div>
-            
+        <div
+            className="w-full h-full flex flex-col justify-start gap-2 text-white"
+            onMouseMove={handleMouseMove}
+        >
+            <div className="w-full grid grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
+                <CardTitle colSpan={2} position={position} titles={titles} svgs={svgs} />
+                <CardSponsor colSpan={2} position={position} url={"https://fr.weareholy.com/"} image={"/images/holy_logo.png"} />
+                <CardSponsor colSpan={2} position={position} />
+                <div className="grid col-span-2 grid-rows-2 grid-cols-1 gap-2" >
+                    <CardSocialNetwork colSpan={1} position={position} description={"Revue de presse - Dev - JV"} image={"/images/twitch_logo.png"} url={"https://www.twitch.tv/tainalo2"} color={"145, 70, 255"} />
+                    <CardSocialNetwork colSpan={1} position={position} description={"Vulgarisation stream et dev"} image={"/images/logo_youtube.png"} url={"https://www.youtube.com/@tainalo2"} color={"255, 3, 7"} />
+                </div>
+                <Card colSpan={2} position={position}>
+                    <div className="w-full h-[250px] relative">
+                        <div className="absolute top-[-20px] left-[-20px] w-[350px] h-[340px]">
+                            <img className="object-cover" src="/images/Alexandre_RONGIER.png" alt=""
+                            />
+                        </div>
+                    </div>
+                </Card>
+                <div className="grid col-span-2 grid-rows-2 grid-cols-1 gap-2" >
+                    <CardSocialNetwork colSpan={1} position={position} description={"Veille tech/business streaming"} reverse reverseImage image={"/images/logo_twitter.png"} url={"https://www.twitter.com/tainalo2"} color={"1, 174, 239"} />
+                    <CardSocialNetwork colSpan={1} position={position} description={"Micro tutos streaming"} reverse image={"/images/tiktok_logo.png"} url={"https://www.tiktok.com/@tainalo22"} color={"238, 29, 82"} />
+                </div>
+                <CardTarif colSpan={2} position={position} tarifDay={300} tarifHour={40} />
+                <CardDispo colSpan={2} position={position} />
+                <CardContact colSpan={2} position={position} />
+            </div>
+
         </div>
-    );
+    )
 };
 
 export default Entertainer;

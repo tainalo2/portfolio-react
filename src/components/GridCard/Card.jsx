@@ -3,12 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 
 const Card = ({ children, colSpan, position }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
+    const [offset, setOffset] = useState({ x: -1500, y: -1500 });
     const elementToGetPosition = useRef(null);
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-      }
+    }
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,7 +25,7 @@ const Card = ({ children, colSpan, position }) => {
     useEffect(() => {
         if (elementToGetPosition.current) {
             sleep(800).then(() => { setOffset({ x: elementToGetPosition.current.getBoundingClientRect().left, y: elementToGetPosition.current.getBoundingClientRect().top }); });
-            
+
         }
     }, []);
 
@@ -50,7 +50,7 @@ const Card = ({ children, colSpan, position }) => {
                 </div>
             </div>
             <div className="relative w-full h-full p-2 bg-gray-900 rounded-lg">
-                <div className="absolute transition-opacity duration-500 ease-out opacity-0"
+                <div className="absolute z-[0] transition-opacity duration-500 ease-out opacity-0"
                     style={{
                         boxShadow: '0px 0px 100px 70px rgba(255,255,255,0.3)',
                         opacity: isHovered ? 0.7 : 0,
@@ -58,7 +58,9 @@ const Card = ({ children, colSpan, position }) => {
                         top: `${position.y - offset.y}px`,
                     }}>
                 </div>
-                {children}
+                <div className="w-full h-full relative z-[1]">
+                    {children}
+                </div>
             </div>
 
         </div>

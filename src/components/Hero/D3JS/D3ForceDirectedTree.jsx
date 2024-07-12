@@ -187,7 +187,7 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
 
     return (
         <div className='relative w-full h-fit flex justify-center'>
-            <svg className='relative top-[-150px]' ref={svgRef}></svg>
+            <svg className='relative' ref={svgRef}></svg>
 
         </div>
     );
