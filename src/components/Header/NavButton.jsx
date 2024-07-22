@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 
-const NavButton = ({ name, url }) => {
+
+const NavButton = ({ name, url, id }) => {
     const { selectedTab } = useContext(MyContext);
     const [ isHovered, setIsHovered ] = useState(false);
-
     return (
-        <li key={name} className='text-sm font-semibold relative'
+        <li key={name} className='font-semibold relative text-xs lg:text-sm'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
@@ -23,8 +23,8 @@ const NavButton = ({ name, url }) => {
             </Link>
             {url === selectedTab ? (
                 <motion.div
-                    className="absolute bottom-[-5px] w-[5px] h-[5px] mx-[50%] rounded-full bg-white"
-                    layoutId="navIndicator"
+                    className="absolute w-[5px] h-[5px] rounded-full bg-white left-[-10px] bottom-[30%] sm:left-0 sm:bottom-[-5px]  sm:mx-[50%]"
+                    layoutId={"navButtonId"+id}
                     transition={{
                         type: 'spring',
                         bounce: 0.4

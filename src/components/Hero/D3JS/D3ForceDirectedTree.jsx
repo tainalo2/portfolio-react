@@ -1,26 +1,36 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import { MyContext } from '../../../MyContext';
 import * as d3 from 'd3';
 
 const ForceDirectedTree = ({ data, mouseStrength }) => {
+    const { isMobile } = useContext(MyContext);
     const svgRef = useRef();
     const mouseX = useRef(0);
     const mouseY = useRef(0);
 
     useEffect(() => {
-        const width = 800; // Taille initiale du SVG
-        const height = 800; // Taille initiale du SVG
-        const rootWH = 160;
-        const centerWH = 15;
-        const nodeWH = 20;
+        const width = isMobile ? window.innerWidth + 10 : 800; // Taille initiale du SVG
+        const height = isMobile ? window.innerHeight + 20 : 800; // Taille initiale du SVG
+        const rootWH = isMobile ? 80 : 160;
+        const centerWH = isMobile ? 7 : 15;
+        const nodeWH = isMobile ? 10 : 20;
+        const force = isMobile ? -600 : -300;
+        const linkDist = isMobile ? 100 : 10;
 
         // Clear previous SVG content
         d3.select(svgRef.current).selectAll('*').remove();
 
+        // Find the root node
+        const rootNode = data.nodes.find(node => node.group === 'root');
+
         // Create the simulation
         const simulation = d3.forceSimulation(data.nodes)
-            .force('link', d3.forceLink(data.links).id(d => d.id).distance(rootWH - 10))
-            .force('charge', d3.forceManyBody().strength(-300))
+            .force('link', d3.forceLink(data.links).id(d => d.id).distance(linkDist))
+            .force('charge', d3.forceManyBody().strength(force))
             .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('gravity', d3.forceRadial(0.1, rootNode.x, rootNode.y).strength(d => {
+                return d.group === 'center' ? 0.2 : 0.18;
+            }))
             .force('mouse', d3.forceRadial(100, width / 2, height / 2).strength(mouseStrength));
 
         const svg = d3.select(svgRef.current)
@@ -94,8 +104,7 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
                 } else {
                     return (nodeWH * -1.50 / 2); 
                 }
-            }
-            )
+            })
             .attr('y', d => {
                 if (d.group === 'root') {
                     return (rootWH * -1); 
@@ -186,9 +195,8 @@ const ForceDirectedTree = ({ data, mouseStrength }) => {
     }, [data, mouseStrength]);
 
     return (
-        <div className='relative w-full h-fit flex justify-center'>
+        <div className='relative top-[-100px] left-[-20px] w-full h-fit flex justify-center'>
             <svg className='relative' ref={svgRef}></svg>
-
         </div>
     );
 };

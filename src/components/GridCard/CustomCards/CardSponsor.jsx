@@ -12,13 +12,13 @@ const CardSponsor = ({ colSpan, position, url, image }) => {
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <a href={url} target="_blank" rel="noreferrer" className="w-full h-full relative">
-                    <div className="absolute text-sm opacity-70">
+                    <div className="absolute text-xs sm:text-sm opacity-70">
                         Sponsor
                     </div>
                     <div className="w-full h-full flex justify-center items-center text-xl font-bold text-center">
                         {image && <img className="my-[-5%]" src={image} alt="" />}
                         {!image &&
-                            <span className="w-full h-full flex justify-center items-center">
+                            <span className="w-full h-full flex text-sm sm:text-base justify-center items-center">
                                 Emplacement disponible
                                 <span>
                                     <img className="antialiased max-w-[40px] ml-[5px]" src="/images/winking_face.png" alt="" />

@@ -49,7 +49,7 @@ const Card = ({ children, colSpan, position }) => {
                     }}>
                 </div>
             </div>
-            <div className="relative w-full h-full p-2 bg-gray-900 rounded-lg">
+            <div className="relative w-full h-full p-1 sm:p-2 bg-gray-900 rounded-lg">
                 <div className="absolute z-[0] transition-opacity duration-500 ease-out opacity-0"
                     style={{
                         boxShadow: '0px 0px 100px 70px rgba(255,255,255,0.3)',

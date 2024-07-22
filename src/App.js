@@ -17,19 +17,20 @@ function App() {
       <MyProvider>
         <Router>
           <MainBG />
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />}>
-              <Route index element={<ARTree />} />
-              <Route path="devweb" element={<DevWeb />} />
-              <Route path="streaming" element={<Streaming />} />
-              <Route path="entertainer" element={<Entertainer />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-
-          </Routes>
+          <div className='px-4'>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />}>
+                <Route index element={<ARTree />} />
+                <Route path="devweb" element={<DevWeb />} />
+                <Route path="streaming" element={<Streaming />} />
+                <Route path="entertainer" element={<Entertainer />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Route>
+            </Routes>
+            <Footer />
+          </div>
         </Router>
-        <Footer />
       </MyProvider>
     </div>
   );

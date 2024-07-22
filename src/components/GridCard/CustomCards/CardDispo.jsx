@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "../Card";
 import { motion } from "framer-motion";
+import { MyContext } from "../../../MyContext";
 
-const CardDispo = ({colSpan, position}) => {
+const CardDispo = ({ colSpan, position }) => {
+    const { isMobile } = useContext(MyContext);
     const [isHoveredDispo, setIsHoveredDispo] = useState(false);
 
     return (
@@ -11,23 +13,28 @@ const CardDispo = ({colSpan, position}) => {
                 onMouseEnter={() => setIsHoveredDispo(true)}
                 onMouseLeave={() => setIsHoveredDispo(false)}
             >
-                <div className="w-full h-full flex justify-between">
-                    <div className="text-3xl font-bold">
+                <div className="w-full h-full flex justify-center">
+                    <div className="text-2xl sm:text-3xl font-bold">
                         Disponibilité
                     </div>
-                    <div className="w-[0px] h-[0px] rounded-full bg-green-400 shadow-current" style={{ boxShadow: "0px 0px 105px 70px rgba(66,200,115,0.9)" }}></div>
+                    <div
+                    className="w-[0px] h-[0px] rounded-full bg-green-400 shadow-current"
+                    style={{
+                        boxShadow: !isMobile ? "0px 0px 105px 70px rgba(66,200,115,0.9)" : "0px 0px 105px 50px rgba(66,200,115,0.9)"
+                    }}></div>
                 </div>
                 <div className="absolute overflow-hidden"
                     style={{
                         width: "calc(100% + 200px)",
                         height: "calc(100% + 100px)",
                         left: "-100px",
-                        top: isHoveredDispo ? "28%" : "60%",
+                        top: isHoveredDispo ? "28%" : isMobile ? "0%" : "60%",
                         transition: "top 0.3s ease-in-out",
                     }}
                 >
                     <div className="w-full h-full flex flex-col justify-center items-center gap-1">
                         <motion.div
+                            className="hidden sm:block"
                             key={isHoveredDispo ? 'hovered' : 'not-hovered'}
                             animate={{ y: [0, -5, 0] }}
                             transition={{
@@ -41,10 +48,10 @@ const CardDispo = ({colSpan, position}) => {
                         </motion.div>
                         <div className="w-full h-full overflow-hidden  flex justify-center rounded-[100%]"
                             style={{
-                                boxShadow: "inset 0px 0px 30px 10px rgba(66,200,115,0.5)",
+                                boxShadow: !isMobile ? "inset 0px 0px 30px 10px rgba(66,200,115,0.5)" : "inset 0px 0px 30px 10px rgba(66,200,115,0)",
                             }}
                         >
-                            <div className="text-2xl font-bold mt-8">Immédiate</div>
+                            <div className="text-xl sm:text-2xl font-bold mt-8">Immédiate</div>
                         </div>
 
                     </div>

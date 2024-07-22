@@ -12,7 +12,7 @@ const CardTechno = ({ children, colSpan, position, image, title, xp }) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <img className="max-w-[50px]" src={image} alt="" />
+                <img className="max-w-[40px] sm:max-w-[50px]" src={image} alt="" />
                 <div
                     className={`overflow-hidden flex flex-col justify-end items-end text-nowrap`}
                     style={{

@@ -51,7 +51,7 @@ const ARTree = ({}) => {
                 { source: 'center3', target: 'node16', value: 1 },
             ]
         }
-        } mouseStrength={0.03} />
+        } mouseStrength={0.02} />
 
         
     );

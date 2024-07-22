@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MyContext } from "../../../MyContext";
 import Card from "../Card";
 
 const CardTitle = ({ colSpan, position, titles, svgs }) => {
+    const { isMobile } = useContext(MyContext);
     const [isHovered, setIsHovered] = useState(false);
 
     const titlesList = titles.map((title, index) => {
         return (
-            <div className="text-3xl font-bold" key={index}>
+            <div className="text-2xl sm:text-3xl font-bold" key={index}>
                 {title}
             </div>
         );
@@ -15,10 +17,10 @@ const CardTitle = ({ colSpan, position, titles, svgs }) => {
     const svgsList = svgs.map((svg, index) => {
         if (index == 0) {
             return (
-                <img key={index} className="absolute w-32" src={svg} alt=""
+                <img key={index} className="absolute w-28 sm:w-32" src={svg} alt=""
                     style={{
-                        right: isHovered ? '-60px' : '-80px',
-                        top: isHovered ? '-60px' : '-80px',
+                        right: isHovered || isMobile ? '-60px' : '-80px',
+                        top: isHovered || isMobile ? '-60px' : '-80px',
                         rotate: '-45deg',
                         transition: 'all 0.3s ease'
 
@@ -29,10 +31,10 @@ const CardTitle = ({ colSpan, position, titles, svgs }) => {
 
         if (index == 1) {
             return (
-                <img key={index} className="absolute w-32" src={svg} alt=""
+                <img key={index} className="absolute w-28 sm:w-32" src={svg} alt=""
                     style={{
                         right: '0px',
-                        bottom: isHovered ? '-40px' : '-80px',
+                        bottom: isHovered ? '-40px' : isMobile ? '-60px' : '-80px',
                         rotate: '10deg',
                         transition: 'all 0.3s ease'
 
@@ -45,8 +47,8 @@ const CardTitle = ({ colSpan, position, titles, svgs }) => {
             return (
                 <img key={index} className="absolute w-24" src={svg} alt=""
                     style={{
-                        left: isHovered ? '110px' : '90px',
-                        top: isHovered ? '-30px' : '-60px',
+                        left: isHovered || isMobile ? '110px' : '90px',
+                        top: isHovered || isMobile ? '-30px' : '-60px',
                         rotate: '30deg',
                         transition: 'all 0.3s ease'
 
@@ -62,7 +64,7 @@ const CardTitle = ({ colSpan, position, titles, svgs }) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <div className="w-full h-full flex flex-col items-start justify-end gap-2">
+                <div className="w-full h-full flex flex-col items-start justify-end sm:gap-2">
                     {titlesList}
                 </div>
                 {svgsList}

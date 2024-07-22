@@ -49,7 +49,7 @@ const Streaming = () => {
             className="w-full h-full flex flex-col justify-start gap-2 text-white"
             onMouseMove={handleMouseMove}
         >
-            <div className="w-full grid grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
+            <div className="w-full hidden sm:grid grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
                 <CardTitle colSpan={2} position={position} titles={titles} svgs={svgs} />
                 <div className="col-span-4 grid grid-rows-2 grid-cols-4 gap-2">
                     {technoList}
@@ -71,6 +71,18 @@ const Streaming = () => {
                 <CardTarif colSpan={2} position={position} tarifDay={300} tarifHour={40} />
                 <CardDispo colSpan={2} position={position} />
                 <CardContact colSpan={2} position={position} />
+            </div>
+
+            <div className="grid sm:hidden w-full grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
+                <CardTitle colSpan={6} position={position} titles={titles} svgs={svgs} />
+                <div className="col-span-6 grid grid-rows-2 grid-cols-4 gap-2">
+                    {technoList}
+                </div>
+                <Card colSpan={6} position={position} >
+                    <video src="/videos/poc_OBS.mp4" type="video/mp4" autoPlay controls muted loop />
+                </Card>
+                <CardTarif colSpan={3} position={position} tarifDay={300} tarifHour={40} />
+                <CardDispo colSpan={3} position={position} />
             </div>
 
         </div>

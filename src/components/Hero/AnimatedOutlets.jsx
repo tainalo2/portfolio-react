@@ -10,7 +10,7 @@ const AnimatedOutlets = () => {
     const pageVariants = {
         initial: { opacity: 0, x: 100 },
         animate: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: 100 },
+        exit: { opacity: 0, x: -100 },
     };
     return (
         <AnimatePresence mode="wait" initial={true}>
@@ -20,7 +20,7 @@ const AnimatedOutlets = () => {
                 animate="animate"
                 exit="exit"
                 variants={pageVariants}
-                transition={{ duration: .5, ease: 'easeInOut' }}
+                transition={{ duration: .3, ease: 'easeInOut' }}
             >
                 {element && React.cloneElement(element, { key: location.pathname })}
             </motion.div>

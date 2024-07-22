@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "../Card";
+import { MyContext } from "../../../MyContext";
 
 const CardSocialNetwork = ({ colSpan, position, image, description, reverseImage, reverse, url, color }) => {
+    const { isMobile } = useContext(MyContext);
     const [isHovered, setIsHovered] = useState(false);
     return (
         <Card
@@ -25,22 +27,21 @@ const CardSocialNetwork = ({ colSpan, position, image, description, reverseImage
                             ...(reverseImage ? { transform: 'scaleX(-1)' } : { transform: 'scaleX(1)' }),
                         }}
                     ></div>
-                    <img className="absolute" src={image} alt=""
+                    <img className="absolute w-[40px] sm:w-[70px]" src={image} alt=""
                         style={{
-                            top: isHovered ? '-5px' : '-20px',
-                            width: "70px",
+                            top: isHovered || isMobile ? '-10px' : '-20px',
                             rotate: reverse ? "-30deg" : "30deg",
                             transition: "all 0.3s ease-in-out",
-                            ...((reverse && isHovered) ? { right: '-5px' } :
+                            ...((reverse && (isHovered || isMobile)) ? { right: '-10px' } :
                                 (reverse && !isHovered) ? { right: '-20px' } :
-                                    (!reverse && isHovered) ? { left: '0px' } : { left: '-20px' }),
+                                (!reverse && (isHovered || isMobile)) ? { left: '-10px' } : { left: '-20px' }),
                             ...(reverseImage ? { transform: 'scaleX(-1)' } : { transform: 'scaleX(1)' }),
 
                         }}
                     />
                     <div className="w-full h-full absolute top-0 left-0">
                         <div className="w-full h-full flex justify-start items-end">
-                            <div className="text-2xl font-bold">
+                            <div className="sm:text-2xl font-bold">
                                 {description}
                             </div>
                         </div>

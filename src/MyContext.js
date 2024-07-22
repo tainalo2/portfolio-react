@@ -7,9 +7,10 @@ export const MyContext = createContext();
 export const MyProvider = ({ children }) => {
   const [streamingService, setStreamingService] = useState(false);
   const [ selectedTab, setSelectedTab ] = useState('Home');
+  const [isMobile, setIsMobile] = useState(true);
 
   return (
-    <MyContext.Provider value={{ streamingService, setStreamingService, selectedTab, setSelectedTab }}>
+    <MyContext.Provider value={{ streamingService, setStreamingService, selectedTab, setSelectedTab, isMobile, setIsMobile }}>
       {children}
     </MyContext.Provider>
   );
