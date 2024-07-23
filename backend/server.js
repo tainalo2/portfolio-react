@@ -26,7 +26,7 @@ app.post('/api/contact', async (req, res) => {
         const emailContent = [
             'From: "Alexandre RONGIER" <contact.tainalo2@gmail.com>',
             'To: contact.tainalo2@gmail.com',
-            'Subject: ' + req.body.subject + ' ' + req.body.firstName + ' ' + req.body.lastName + ' <' + req.body.email + '>',
+            'Subject: alexandre-rongier.fr contact : ' + req.body.subject + ' ' + req.body.firstName + ' ' + req.body.lastName + ' <' + req.body.email + '>',
             '',
             req.body.message
         ];
