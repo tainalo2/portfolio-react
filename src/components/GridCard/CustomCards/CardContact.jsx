@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "../Card";
 import { motion, useAnimation } from "framer-motion";
+import { MyContext } from "../../../MyContext";
 
 
 const CardContact = ({ colSpan, position }) => {
     const [isHoveredContact, setIsHoveredContact] = useState(false);
+    const { setIsContactOpen } = useContext(MyContext);
 
     const controls1 = useAnimation();
     const controls2 = useAnimation();
@@ -25,9 +27,10 @@ const CardContact = ({ colSpan, position }) => {
     }, [controls1, controls2, controls3]);
     return (
         <Card colSpan={colSpan} position={position}>
-            <div className="relative w-full h-full"
+            <div className="relative w-full h-full cursor-pointer"
                 onMouseEnter={() => setIsHoveredContact(true)}
                 onMouseLeave={() => setIsHoveredContact(false)}
+                onClick={() => setIsContactOpen(true)}
             >
                 <div className="w-full h-full absolute top-0 left-0">
                     <div className="w-full h-full flex justify-center items-start gap-6">

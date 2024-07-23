@@ -21,7 +21,7 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Home />}>
-                <Route index element={<ARTree />} />
+                <Route index element={<Navigate to="/devweb" replace  />} />
                 <Route path="devweb" element={<DevWeb />} />
                 <Route path="streaming" element={<Streaming />} />
                 <Route path="entertainer" element={<Entertainer />} />

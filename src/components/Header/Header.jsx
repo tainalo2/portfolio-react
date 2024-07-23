@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ContactButton from './ContactButton';
 import { MyContext } from '../../MyContext';
 import { Link } from 'react-router-dom';
@@ -7,18 +7,19 @@ import NavContainerDesktop from './NavContainerDesktop';
 import Contact from './Contact/Contact';
 
 const Header = () => {
-    const { setIsMobile, streamingService, setSelectedTab } = useContext(MyContext);
-    const [isContactOpen, setIsContactOpen] = useState(false);
+    const { setIsMobile, streamingService, setSelectedTab, isContactOpen, setIsContactOpen } = useContext(MyContext);
+    
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 640);
         };
 
         window.addEventListener('resize', handleResize);
+        handleResize();
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [setIsMobile]);
+    }, []);
 
     const location = useLocation();
     useEffect(() => {
@@ -33,7 +34,7 @@ const Header = () => {
 
     return (
         <header className='w-full text-white pt-4 flex flex-col justify-center items-center z-50 top-0 bg-opacity-0 mb-2'>
-            <div className='w-full max-w-screen-lg h-full flex justify-between items-center text-sm sm:text-lg'>
+            <div className='z-50 w-full max-w-screen-lg h-full flex justify-between items-center text-sm sm:text-lg'>
                 <Link to='/'>
                     <div className='flex items-center gap-2'>
                         <div className=''>
