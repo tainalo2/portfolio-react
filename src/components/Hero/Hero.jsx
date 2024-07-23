@@ -3,7 +3,7 @@ import AnimatedOutlets from "./AnimatedOutlets";
 
 const Hero = () => {
     return (
-        <div className="relative w-full h-fit transform-gpu">
+        <div className="relative w-full h-fit">
             <div className="w-full flex justify-center">
                 <div className="flex justify-between max-w-screen-lg w-full gap-4">
                     <div id="toChange" className="flex-1">

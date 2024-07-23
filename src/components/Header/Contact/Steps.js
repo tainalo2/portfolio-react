@@ -1,4 +1,4 @@
-const steps = [
+export const steps = [
     {
         step : 1,
         name: 'Information',
@@ -43,15 +43,46 @@ const steps = [
         name: 'Sujet',
         inputs : [
             {
+                type : 'select',
+                required : false,
+                uniqueName: 'category',
+                displayName: 'Catégorie',
+                options: [
+                    {
+                        label : 'Dev Web',
+                        value : 'devweb'
+                    },
+                    {
+                        label : 'Streaming',
+                        value : 'streaming'
+                    },
+                    {
+                        label : 'Animateur',
+                        value : 'entertainer'
+                    }
+                ]
+            },
+            {
                 type : 'inputText',
                 required : true,
                 uniqueName: 'subject',
                 displayName: 'Sujet',
-                regex: '^[a-zA-Z]+$',
+                regex: '^[A-Za-z0-9\\s-]+$',
                 errorMessage: 'Veuillez entrer un sujet valide'
+            },
+            {
+                type : 'textarea',
+                required : true,
+                uniqueName: 'message',
+                displayName: 'Message',
+                maxLength: 500,
+                errorMessage: 'Veuillez entrer un message valide'
             }
         ]
     }
 ]
 
-export default steps;
+export const fetchInfo = {
+    url : '/api/contact',
+    method : 'POST'
+}

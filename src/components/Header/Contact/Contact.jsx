@@ -1,5 +1,5 @@
 import { ContactContextProvider } from './Context'
-import ContactWrapper from './ContactWrapper2'
+import ContactWrapper from './ContactWrapper'
 
 const Contact = ({closeContact}) => {
   

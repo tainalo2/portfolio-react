@@ -23,7 +23,7 @@ const Card = ({ svg, title, description, images, linkedCenter }) => {
 
     return (
         <div
-            className="transform-gpu flex justify-center items-center flex-col gap-2 max-w-[250px] rounded-lg overflow-hidden bg-gray-900 opacity-90 transition-all duration-200 ease-in-out hover:cursor-pointer border-opacity-10 border-[1px] border-gray-400"
+            className="flex justify-center items-center flex-col gap-2 max-w-[250px] rounded-lg overflow-hidden bg-gray-900 opacity-90 transition-all duration-200 ease-in-out hover:cursor-pointer border-opacity-10 border-[1px] border-gray-400"
             style={{
                 //transform: isHovered ? 'scale(1.1)' : 'scale(1)',
                 boxShadow: isHovered ? '0px 0px 20px 2px rgba(255,255,255,0.1)' : '0px 0px 0px 0px rgba(255,255,255,0.0)',

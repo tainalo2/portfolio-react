@@ -1,13 +1,16 @@
-import React, { useState, forwardRef, useEffect } from 'react'
+import React, { useState, forwardRef, useEffect, useContext } from 'react'
+import { ContactContext } from '../../Context';
 
-const InputText = forwardRef(function ({ uniqueName, displayName, value, regex, errorMessage, handleValidInput }, ref) {
+
+const InputText = forwardRef(function ({ uniqueName, displayName, value, regex, errorMessage }, ref) {
+    const { formReferences } = useContext(ContactContext);
     const [isFocused, setIsFocused] = useState(false);
     const [isEmpty, setIsEmpty] = useState(true);
     const [isValidInput, setIsValidInput] = useState(true);
     const validationRegex = new RegExp(regex);;
 
     const checkInput = () => {
-        const input = document.querySelector(`input[name="${uniqueName}"]`);
+        const input = ref.current;
         if (input && input.value.length > 0 && isEmpty) {
             setIsEmpty(false);
         } else if (input && input.value.length === 0 && !isEmpty) {
@@ -16,19 +19,14 @@ const InputText = forwardRef(function ({ uniqueName, displayName, value, regex, 
     }
 
     const checkValidity = () => {
-        const input = document.querySelector(`input[name="${uniqueName}"]`);
+        const input = ref.current;
         if (validationRegex.test(input.value)) {
             setIsValidInput(true);
-            if (handleValidInput) {
-                handleValidInput(true);
-            }
+            formReferences[uniqueName].isValid = true;
         } else {
             setIsValidInput(false);
-            if (handleValidInput) {
-                handleValidInput(false);
-            }
+            formReferences[uniqueName].isValid = false;
         }
-
     }
 
     useEffect(() => {
