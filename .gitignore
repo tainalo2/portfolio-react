@@ -10,7 +10,7 @@
 
 # production
 /build
-/backend/gmailCredentails.json
+/backend/gmailCredentials.json
 
 # misc
 .DS_Store

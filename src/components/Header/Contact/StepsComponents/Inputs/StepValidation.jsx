@@ -6,13 +6,16 @@ function StepValidation() {
     const { formReferences } = useContext(ContactContext);
     const [is200, setIs200] = useState(false);
     var formToFetch = {};
+    const api = axios.create({
+        baseURL: window.location.origin
+      });
     Object.keys(formReferences).forEach((key) => {
         if (formReferences[key].isValid) {
             formToFetch[key] = formReferences[key].value;
         }
     })
     useEffect(() => {
-        axios.post('https://www.purpletwit.com/api/contact', formToFetch).then((response) => {
+        api.post('/api/contact', formToFetch).then((response) => {
             console.log(response);
             if (response.status === 200) {
                 setIs200(true);
