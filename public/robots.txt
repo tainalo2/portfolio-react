@@ -1,3 +1,34 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt pour Alexandre RONGIER
+
+# Autoriser tous les robots à explorer tout le site
 User-agent: *
-Disallow:
+Disallow: /admin/  # Bloque l'accès aux pages d'administration
+Disallow: /login/  # Bloque l'accès à la page de connexion
+
+# Autoriser l'exploration des fichiers CSS et JS
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Exclure certains fichiers spécifiques si nécessaire
+Disallow: /private/
+
+# Sitemap pour le SEO
+Sitemap: https://www.alexandre-rongier.fr/sitemap.xml
+
+# Instructions pour les moteurs de recherche pour les pages spécifiques
+User-agent: Googlebot
+Allow: /devweb/
+Allow: /streaming/
+Allow: /entertainer/
+Disallow: /drafts/  # Par exemple, si tu as des brouillons de pages à ne pas indexer
+
+User-agent: Bingbot
+Allow: /devweb/
+Allow: /streaming/
+Allow: /entertainer/
+Disallow: /temp/  # Exclure les pages temporaires
+
+# Instructions pour des moteurs de recherche spécifiques, si nécessaire
+User-agent: Yandex
+Disallow: /
