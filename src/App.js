@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import { MyProvider } from './MyContext';
 import MainBG from './components/Backgrounds/MainBG';
 import Footer from './components/Footer/Footer';
-import ARTree from './components/Outlets/Home/ARTree';
 import DevWeb from './components/Outlets//Home/DevWeb/DevWeb';
 import Streaming from './components/Outlets/Home/Streaming/Streaming';
 import Entertainer from './components/Outlets/Home/Entertainer/Entertainer';

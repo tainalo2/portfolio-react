@@ -8,7 +8,7 @@ import CardDispo from "../../../GridCard/CustomCards/CardDispo";
 import CardContact from "../../../GridCard/CustomCards/CardContact";
 
 const Streaming = () => {
-    const { setStreamingService } = useContext(MyContext);
+    const { setStreamingService, winSize } = useContext(MyContext);
 
     useEffect(() => {
         // Composant monté
@@ -33,10 +33,10 @@ const Streaming = () => {
         { image: "/images/larix_logo.png", title: "Larix B.", xp: "5" },
         { image: "/images/elgato_logo.png", title: "Elgato", xp: "5" },
         { image: "/images/twitchat_logo.png", title: "Twitchat", xp: "2" },
-        { image: "/images/streamerbot_logo.png", title: "Streamerbot", xp: "2" },
-        { image: "/images/node-red_logo.png", title: "Node-Red", xp: "2" },
-        { image: "/images/framer-motion_logo.png", title: "Motion", xp: "1" },
-        { image: "/images/git_logo.png", title: "Git", xp: "2" }
+        { image: "/images/streamerbot_logo.png", title: "Str.bot", xp: "2" },
+        { image: "/images/liveu_logo.png", title: "Live U", xp: "1" },
+        { image: "/images/belabox_logo.webp", title: "Belabox", xp: "2" },
+        { image: "/images/react_logo.png", title: "React", xp: "2" }
     ];
 
     const technoList = technos.map((techno) => {
@@ -49,40 +49,20 @@ const Streaming = () => {
             className="w-full h-full flex flex-col justify-start gap-2 text-white"
             onMouseMove={handleMouseMove}
         >
-            <div className="w-full hidden sm:grid grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
-                <CardTitle colSpan={2} position={position} titles={titles} svgs={svgs} />
-                <div className="col-span-4 grid grid-rows-2 grid-cols-4 gap-2">
+            <div className="w-full grid grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
+                <CardTitle colSpan={winSize > 640 ? 2 : 6} position={position} titles={titles} svgs={svgs} />
+                <div className="col-span-6 sm:col-span-4 grid grid-rows-2 grid-cols-4 gap-2">
                     {technoList}
                 </div>
-                <Card colSpan={3} position={position} >
+                <Card colSpan={winSize > 640 ? 3 : 6} position={position} >
                     <video src="/videos/poc_OBS.mp4" type="video/mp4" autoPlay controls muted loop />
                 </Card>
-
-                <div className="grid col-span-3 grid-rows-2 grid-cols-2 gap-2" >
-                    <Card colSpan={1} position={position} >
-                    </Card>
-                    <Card colSpan={1} position={position} >
-                    </Card>
-                    <Card colSpan={1} position={position} >
-                    </Card>
-                    <Card colSpan={1} position={position} >
-                    </Card>
-                </div>
-                <CardTarif colSpan={2} position={position} tarifDay={300} tarifHour={40} />
-                <CardDispo colSpan={2} position={position} />
-                <CardContact colSpan={2} position={position} />
-            </div>
-
-            <div className="grid sm:hidden w-full grid-rows-[1fr_auto_auto] grid-cols-6 gap-2">
-                <CardTitle colSpan={6} position={position} titles={titles} svgs={svgs} />
-                <div className="col-span-6 grid grid-rows-2 grid-cols-4 gap-2">
-                    {technoList}
-                </div>
-                <Card colSpan={6} position={position} >
-                    <video src="/videos/poc_OBS.mp4" type="video/mp4" autoPlay controls muted loop />
-                </Card>
-                <CardTarif colSpan={3} position={position} tarifDay={300} tarifHour={40} />
-                <CardDispo colSpan={3} position={position} />
+                {winSize >= 640 && <Card colSpan={winSize > 640 ? 3 : 6} position={position} >
+                    <iframe src="https://www.behance.net/embed/project/206517563?ilo0=1" height="280" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
+                </Card>}
+                <CardTarif colSpan={winSize > 640 ? 2 : 3} position={position} tarifDay={300} tarifHour={40} />
+                <CardDispo colSpan={winSize > 640 ? 2 : 3} position={position} />
+                {winSize >= 640 && <CardContact colSpan={2} position={position} />}
             </div>
 
         </div>
