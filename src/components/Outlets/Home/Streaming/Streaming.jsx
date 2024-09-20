@@ -29,7 +29,7 @@ const Streaming = () => {
     const svgs = ["/SVG/camera-10-svgrepo-com.svg", "/SVG/stream-display-svgrepo-com.svg", "/SVG/microphone-16-svgrepo-com.svg"];
 
     const technos = [
-        { image: "/images/Open_Broadcaster_Software_Logo.png", title: "OBS", xp: "10" },
+        { image: "/images/Open_Broadcaster_Software_Logo.png", title: "OBS", xp: "11" },
         { image: "/images/larix_logo.png", title: "Larix B.", xp: "5" },
         { image: "/images/elgato_logo.png", title: "Elgato", xp: "5" },
         { image: "/images/twitchat_logo.png", title: "Twitchat", xp: "2" },

@@ -1,0 +1,38 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - master  # Déclenche le workflow sur la branche master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4  # Utilisation de la dernière version stable
+
+    - name: SSH to server and deploy
+      uses: appleboy/ssh-action@v1.0.3  # Vérifie la dernière version stable
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          echo "Navigating to project directory..."
+          cd ${{ secrets.PROJECT_PATH }} || { echo "Failed to navigate to project directory"; exit 1; }
+          
+          echo "Pulling latest changes..."
+          git pull origin master || { echo "Failed to pull latest changes"; exit 1; }
+          
+          echo "Navigating to Docker Compose directory..."
+          cd ${{ secrets.DOCKERCOMPOSE_PATH }} || { echo "Failed to navigate to Docker Compose directory"; exit 1; }
+          
+          echo "Rebuilding Docker service..."
+          sudo docker-compose build ${{ secrets.SERVICE_NAME }} || { echo "Failed to build Docker service"; exit 1; }
+          
+          echo "Restarting Docker service..."
+          sudo docker-compose up -d ${{ secrets.SERVICE_NAME }} || { echo "Failed to restart Docker service"; exit 1; }
+
+          echo "Deployment complete."
