@@ -38,6 +38,13 @@ const Hero = () => {
                 <script type="application/ld+json">
                     {JSON.stringify(schemaData)}
                 </script>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@tainalo2" />
+                <meta name="twitter:creator" content="@tainalo2" />
+                <meta name="twitter:title" content="Alexandre RONGIER - Dev Web / Streaming Tech / Animateur" />
+                <meta name="twitter:description" content="Développeur React/Node / Technicien streaming / Animateur" />
+                <meta name="twitter:image" content="https://www.alexandre-rongier.fr/images/x_card_800_418.png" />
+                <meta name="twitter:url" content="https://www.alexandre-rongier.fr" />
             </Helmet>
             <div className="w-full flex justify-center">
                 <div className="flex justify-between max-w-screen-lg w-full gap-4">
